@@ -11,28 +11,39 @@
 .hero-section {
   position: relative;
   color: white;
-  background-color: #ACC18A;
+  background-color: #8E8B82;
   padding: 100px;
   overflow: hidden;
 }
 .site-background {
-  background-color: #F2FBE0;
+  background-color: #F3F3F3;
 }
 
-.extra-light-green {
-  background-color: #F2FBE0;
+.c1 {
+  background-color: #F3F3F3;
 }
-.light-green {
-  background-color: #DAFEB7;
+.c2 {
+  background-color: #E9DCBE;
 }
-.green {
-  background-color: #ACC18A;
+.c3 {
+  background-color: #8E8B82;
 }
-.clay {
-  background-color: #837A75;
+.c4 {
+  background-color: #343434;
 }
-.dark-clay {
-  background-color: #605B56;
+
+
+.c1-text {
+  color: #F3F3F3;
+}
+.c2-text {
+  color: #E9DCBE;
+}
+.c3-text {
+  color: #8E8B82;
+}
+.c4-text {
+  color: #343434;
 }
 
 

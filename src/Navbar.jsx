@@ -1,20 +1,25 @@
 import React from "react";
+import NavItem from "./NavItem";
+import { motion, useInView} from "framer-motion";
 
 const Navbar = () => {
   return (
-    <>
-      <div className="w-full h-[65px] bg-white shadow-md flex flex-row items-center justify-between px-20 rounded-b-2xl hover:scale-[1.01] transition-all duration-500">
-        <div className="flex flex-row items-center justify-between w-full">
+    <motion.div
+      className="w-full h-[65px] flex flex-row items-center justify-between px-20 rounded-b-2xl "
+      initial={{ y: -100, opacity: 0 }} // Start above the viewport and hidden
+      animate={{ y: 0, opacity: 1 }} // Animate to the visible position
+      transition={{ duration: 0.75, ease: "easeOut" }} // Adjust speed and easing
+    >
+      <div className="flex flex-row items-center justify-between w-full">
 
-		</div>
-        <div className="flex flex-row items-center justify-between  w-full">
-          <button className="hover:scale-[1.05] transition-all duration-500 text-[20px] font-light tracking-lighter">home</button>
-          <button className="hover:scale-[1.05] transition-all duration-500 text-[20px] font-light tracking-lighter">projects</button>
-          <button className="hover:scale-[1.05] transition-all duration-500 text-[20px] font-light tracking-lighter">resume</button>
-          <button className="hover:scale-[1.05] transition-all duration-500 text-[20px] font-light tracking-lighter">contact</button>
-        </div>
       </div>
-    </>
+      <div className="flex flex-row items-center justify-between w-full">
+        <NavItem label="./skills" href="/home" />
+        <NavItem label="./projects" href="/projects" />
+        <NavItem label="./experience" href="/resume" />
+        <NavItem label="./contact" href="/contact" />
+      </div>
+    </motion.div>
   );
 };
 

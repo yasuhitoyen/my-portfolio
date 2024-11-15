@@ -1,15 +1,13 @@
 import React from "react";
 import Navbar from "./Navbar";
+import Home from "./components/Home";
+import { motion, useScroll } from "framer-motion";
 
 const App = () => {
   return (
-    <div className=" w-full h-screen">
-      <Navbar />
-      <div className="hero-section text-center ">
-        <h1>Hi, I'm Michael</h1>
-        <p>A Computer Science student at UW-Madison...</p>
-
-      </div>
+    <div className=" w-full h-[4000px] c4">
+      <Home></Home>
+      
     </div>
   );
 };

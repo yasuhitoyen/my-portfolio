@@ -6,8 +6,8 @@ const Hero = () => {
 
   return (
     <>
-      <h1 className="text-[120px] font-bold text-center mt-40 text-white">MICHAEL YEN</h1>
-      
+      <h1 className="text-[120px] font-bold text-center mt-40 c8-text">MICHAEL YEN</h1>
+
       <motion.div
         ref={ref} // Attach ref to the element
         initial={{ opacity: 0, y: 50 }} // Starting state

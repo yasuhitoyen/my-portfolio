@@ -6,6 +6,21 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  --color-1: #000000;
+  --color-2: #212930;
+  --color-3: #414B56;
+  --color-4: #606A74;
+  --color-5: #868F98;
+  --color-6: #A8ADB4;
+  --color-7: #C3C8CD;
+  --color-8: #D2D6D9;
+  --color-9: #CBD1D4;
+  --color-10: #B2BCC0;
+  --color-11: #99A3A6;
+  --color-12: #7B858A;
+  --color-13: #4F5559;
+  --color-14: #3D4242;
+  --color-15: #323531;
 
 }
 .hero-section {
@@ -18,32 +33,95 @@
 .site-background {
   background-color: #F3F3F3;
 }
-
 .c1 {
-  background-color: #F3F3F3;
+  background-color: var(--color-1);
 }
 .c2 {
-  background-color: #E9DCBE;
+  background-color: var(--color-2);
 }
 .c3 {
-  background-color: #8E8B82;
+  background-color: var(--color-3);
 }
 .c4 {
-  background-color: #343434;
+  background-color: var(--color-4);
+}
+.c5 {
+  background-color: var(--color-5);
+}
+.c6 {
+  background-color: var(--color-6);
+}
+.c7 {
+  background-color: var(--color-7);
+}
+.c8 {
+  background-color: var(--color-8);
+}
+.c9 {
+  background-color: var(--color-9);
+}
+.c10 {
+  background-color: var(--color-10);
+}
+.c11 {
+  background-color: var(--color-11);
+}
+.c12 {
+  background-color: var(--color-12);
+}
+.c13 {
+  background-color: var(--color-13);
+}
+.c14 {
+  background-color: var(--color-14);
+}
+.c15 {
+  background-color: var(--color-15);
 }
 
-
+/* Text color classes */
 .c1-text {
-  color: #F3F3F3;
+  color: var(--color-1);
 }
 .c2-text {
-  color: #E9DCBE;
+  color: var(--color-2);
 }
 .c3-text {
-  color: #8E8B82;
+  color: var(--color-3);
 }
 .c4-text {
-  color: #343434;
+  color: var(--color-4);
 }
-
-
+.c5-text {
+  color: var(--color-5);
+}
+.c6-text {
+  color: var(--color-6);
+}
+.c7-text {
+  color: var(--color-7);
+}
+.c8-text {
+  color: var(--color-8);
+}
+.c9-text {
+  color: var(--color-9);
+}
+.c10-text {
+  color: var(--color-10);
+}
+.c11-text {
+  color: var(--color-11);
+}
+.c12-text {
+  color: var(--color-12);
+}
+.c13-text {
+  color: var(--color-13);
+}
+.c14-text {
+  color: var(--color-14);
+}
+.c15-text {
+  color: var(--color-15);
+}

@@ -5,7 +5,7 @@ import { motion, useScroll } from "framer-motion";
 
 const App = () => {
   return (
-    <div className=" w-full h-[4000px] c4">
+    <div className=" w-full h-[4000px] c1">
       <Home></Home>
       
     </div>

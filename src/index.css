@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  @apply overscroll-none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -124,4 +132,23 @@
 }
 .c15-text {
   color: var(--color-15);
+}
+.code-background {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #ffffff; /* Default text color */
+  background: transparent; /* Transparent background */
+}
+
+.keyword {
+  color: #c678dd; /* Purple for keywords */
+}
+
+.classname {
+  color: #61afef; /* Blue for class names */
+}
+
+.function {
+  color: #98c379; /* Green for functions */
 }

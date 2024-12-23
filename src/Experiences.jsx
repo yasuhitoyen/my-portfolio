@@ -1,7 +1,8 @@
 import React from "react";
+import { motion } from "framer-motion";
 import ExperienceTab from "./ExperienceTab";
 
-const Experiences = () => {
+const Experiences = ({ id }) => {
   const experiences = [
     {
       title: "Software Engineer",
@@ -26,28 +27,68 @@ const Experiences = () => {
       location: "Virtual",
       description:
         "Designed and delivered tailored tutoring sessions for middle and high school students, focusing on Java programming concepts such as variables, loops, and conditionals, as well as advanced topics like object-oriented programming, recursion, and data structures. Facilitated hands-on learning through practical projects, including games, inventory systems, and GUI-based applications using JavaFX. Simplified complex topics such as multithreading and exception handling, ensuring a clear understanding and fostering problem-solving skills.",
-    }
-    
+    },
   ];
 
+  // Variants for the parent container:
+  // Animate children in a staggered sequence
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, // 0.2s delay between each child's animation
+      },
+    },
+  };
+
+  // Variants for each ExperienceTab child
+  const itemVariants = {
+    hidden: {
+      opacity: 0,
+      y: 20, // Slide up effect
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
-    <div className="w-full h-auto flex flex-col items-center mt-[200px]">
-      <div className="text-center w-full">
-        <h1 className="c1-text text-[80px] font-bold">Experience</h1>
+    <secton id={id}>
+      <div className="w-full h-auto flex flex-col items-center pt-[150px] ">
+        <div className="text-center w-full">
+          <h1 className="c8-text text-[80px] font-bold">Experience</h1>
+        </div>
+
+        {/* Motion container that wraps the ExperienceTabs */}
+        <motion.div
+          className="flex flex-col w-[800px] "
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          // once: true  => Animate only on first scroll into view
+          // amount: 0.2 => 20% of container in view triggers animation
+        >
+          {experiences.map((exp, index) => (
+            // Each child uses the itemVariants
+            <motion.div key={index} variants={itemVariants}>
+              <ExperienceTab
+                title={exp.title}
+                company={exp.company}
+                duration={exp.duration}
+                location={exp.location}
+                description={exp.description}
+              />
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-      <div className="flex flex-col w-[800px]">
-        {experiences.map((exp, index) => (
-          <ExperienceTab
-            key={index}
-            title={exp.title}
-            company={exp.company}
-            duration={exp.duration}
-            location={exp.location}
-            description={exp.description}
-          />
-        ))}
-      </div>
-    </div>
+    </secton>
   );
 };
 

@@ -1,22 +1,30 @@
 import React from "react";
-// Import your PDF from the attachments folder:
+import { motion } from "framer-motion"; // Import Framer Motion
 import MyResume from "./assets/attachments/Resume.pdf";
 
 const ArcText = () => {
-  // Replace the "email" entry with your resume link:
   const links = [
     { href: "https://www.linkedin.com/in/michael-yen-3a971b263/", text: "linkedin" },
     { href: "https://github.com/yasuhitoyen", text: "github" },
-    { href: MyResume, text: "resume" }, // use your PDF instead of mailto:
+    { href: MyResume, text: "resume" },
   ];
 
   return (
     <div className="flex justify-center items-center">
-      <svg
+      {/* Add Framer Motion's motion.svg for animation */}
+      <motion.svg
         width="500"
         height="500"
         viewBox="0 0 500 500"
         xmlns="http://www.w3.org/2000/svg"
+        animate={{
+          rotate: [-5, 5, -5], // Rotate between -5 and 5 degrees
+        }}
+        transition={{
+          duration: 8, // Duration for one complete sway
+          repeat: Infinity, // Infinite loop
+          ease: "easeInOut", // Smooth easing
+        }}
       >
         {/* Define the smaller arc path */}
         <defs>
@@ -55,7 +63,7 @@ const ArcText = () => {
             </a>
           );
         })}
-      </svg>
+      </motion.svg>
     </div>
   );
 };

@@ -7,7 +7,7 @@ const Experiences = ({ id }) => {
     {
       title: "Software Engineer",
       company: "Avalanche Technology",
-      duration: "05/2021 – 07/2022",
+      duration: "05/2023 – 07/2023",
       location: "Fremont, CA",
       description:
         "Automated the processing of semiconductor test measurements, reducing manual testing time by 50% and improving data collection efficiency. Developed Python scripts to automate and visualize critical measurements, including error rates, temperature fluctuations, and magnetic field strength in semiconductor chips, significantly enhancing data analysis efficiency. Identified an unexpected anomaly in output data analysis, where error growth deviated from the expected exponential pattern, leading to new research directions and optimization of chip durability. Enhanced data collection pipelines and streamlined future testing processes by ensuring precise calibration of semiconductor measurement instruments through custom Python routines.",

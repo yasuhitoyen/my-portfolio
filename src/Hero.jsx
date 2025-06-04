@@ -1,142 +1,91 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import CubeImage from "./assets/images/cube.png";
+import ClickableIcons from "./ClickableIcons";
+import ResumeIcon from "./assets/icons/ResumeIcon.png";
+import GithubIcon from "./assets/icons/GithubIcon.png";
+import LinkedinIcon from "./assets/icons/LinkedinIcon.png";
+import Headshot from "./assets/images/Headshot.jpg";
+import MyResume from "./assets/attachments/Resume.pdf";
 
 const Hero = ({ id }) => {
-  const ref = useRef(null); // Create a ref for the element
-  const isInView = useInView(ref, { once: true }); // Detects if in view, fires once
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
+    const resizeHandler = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", resizeHandler);
 
-    const handler = () => setPrefersReducedMotion(mediaQuery.matches);
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
+    return () => {
+      window.removeEventListener("resize", resizeHandler);
+    };
   }, []);
 
-  // Enhanced Cube Configuration with More Variability and Faster Motion
-  const cubes = [
-    {
-      size: 150, // Base size
-      top: 80,
-      left: 250,
-      initialRotation: 10,
-      darker: false,
-      delay: 0,
-      opacity: 0.24, // Increased by 1.2x (0.2 * 1.2)
-      yMotion: [-20, -30, -20], // Increased by 1.5x
-    },
-    {
-      size: 180, // Increased size for more variability
-      top: 220,
-      left: 580,
-      initialRotation: -18, // Increased rotation for more dynamic motion
-      darker: true,
-      delay: 0.4,
-      opacity: 0.42, // Increased by 1.2x (0.35 * 1.2)
-      yMotion: [-30, -45, -30], // Increased by 1.5x
-    },
-    {
-      size: 172, // Adjusted size for variability
-      top: 380,
-      left: 420,
-      initialRotation: 22, // Increased rotation
-      darker: false,
-      delay: 0.8,
-      opacity: 0.36, // Increased by 1.2x (0.3 * 1.2)
-      yMotion: [-25, -37.5, -25], // Increased by 1.5x
-    },
-    {
-      size: 192, // Increased size
-      top: 310,
-      left: 880,
-      initialRotation: -12, // Increased rotation
-      darker: true,
-      delay: 1.2,
-      opacity: 0.54, // Increased by 1.2x (0.45 * 1.2)
-      yMotion: [-30, -45, -30], // Increased by 1.5x
-    },
-    {
-      size: 182, // Increased size
-      top: 130,
-      left: 1040,
-      initialRotation: 7.5, // Increased rotation
-      darker: false,
-      delay: 1.6,
-      opacity: 0.36, // Increased by 1.2x (0.3 * 1.2)
-      yMotion: [-22.5, -33.75, -22.5], // Increased by 1.5x
-    },
-  ];
+  const isMobile = windowWidth < 800;
 
   return (
     <section id={id}>
-      <div className="relative bg-gradient-to-b from-[#212930] to-black min-h-screen flex flex-col items-center justify-start pt-24 md:pt-32 lg:pt-40">
-        {/* Cubes */}
-        <div className="absolute top-0 left-0 w-full h-full z-0">
-          {cubes.map((cube, index) => (
-            <motion.img
-              className="select-none"
-              key={index}
-              src={CubeImage}
-              style={{
-                width: `${cube.size}px`,
-                height: `${cube.size}px`,
-                position: "absolute",
-                top: `${cube.top}px`,
-                left: `${cube.left}px`,
-                filter: cube.darker ? "brightness(60%)" : "brightness(100%)", // Darken specific cubes more for contrast
-                opacity: cube.opacity, // Set initial opacity
-              }}
-              alt={`Cube ${index + 1}`}
-              animate={
-                prefersReducedMotion
-                  ? {}
-                  : {
-                      y: cube.yMotion, // Enhanced vertical motion
-                      rotate: [
-                        cube.initialRotation,
-                        cube.initialRotation + 3, // Increased rotation angle
-                        cube.initialRotation - 3,
-                        cube.initialRotation,
-                      ], // More dynamic rotation
-                      opacity: [cube.opacity, cube.opacity + 0.1, cube.opacity], // Slight opacity pulsing
-                    }
-              }
-              transition={
-                prefersReducedMotion
-                  ? {}
-                  : {
-                      duration: 6, // Reduced duration for faster movement (from 8 to 6)
-                      repeat: Infinity,
-                      repeatType: "loop",
-                      ease: "easeInOut",
-                      delay: cube.delay, // Delay for independent movement
-                    }
-              }
-            />
-          ))}
+      <div className="relative bg-[#F8F5EF] min-h-screen flex flex-col items-center justify-start pt-24 md:pt-32 lg:pt-40">
+        {/* Heading Section */}
+        <div className="flex flex-col lg:flex-row justify-center items-center lg:space-x-10 space-y-6 lg:space-y-0 px-4 text-center">
+          {/* Headshot */}
+          <div className="w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] lg:w-[350px] lg:h-[350px] border-white rounded-full overflow-hidden flex justify-center border-[8px] lg:border-[10px]">
+            <img src={Headshot} className="object-cover scale-[120%]" alt="Headshot" />
+          </div>
+
+          {/* Intro Text */}
+          <div className="relative z-10">
+            <h1 className="font-light mt-2 text-[32px] sm:text-[40px] lg:text-[60px] text-[#0F1013] select-none">
+              <motion.span
+                animate={{ rotate: [-15, 15], scale: [1.2, 1.5] }}
+                transition={{
+                  duration: 2,
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+                style={{ display: "inline-block", transformOrigin: "70% 70%" }}
+              >
+                👋
+              </motion.span>{" "}
+              Hi, I'm
+            </h1>
+            <h1 className="text-[36px] sm:text-[45px] lg:text-[55px] mt-2 text-[#0F1013]">
+              Michael Yen
+            </h1>
+          </div>
         </div>
 
-        {/* Name Heading */}
-        <div className="relative z-10 text-center">
-          <h1 className="text-[120px] font-bold mt-16 sm:mt-16 md:mt-12 lg:mt-12 c8-text">
-            MICHAEL YEN
-          </h1>
-        </div>
-
-        {/* Motion Element */}
+        {/* Tagline + Icons */}
         <motion.div
-          ref={ref} // Attach ref to the element
-          initial={{ opacity: 0, y: 50 }} // Starting state
-          animate={isInView ? { opacity: 1, y: 0 } : {}} // Final state if in view
+          ref={ref}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-black p-6 rounded-lg mx-5 h-[600px] relative z-10 mt-10"
+          className="px-4 py-8 rounded-lg w-full max-w-4xl relative z-10 mt-10 text-center"
         >
-          <h1 className="text-[30px] font-bold text-center text-white">
-            Software Engineer & Fullstack Developer.
-          </h1>
+          {/* Tagline */}
+          <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-5">
+            {["Student @ UW Madison", "Software Engineer", "Book Enthusiast"].map((label, idx) => (
+              <React.Fragment key={label}>
+                {idx > 0 && <span className="text-[20px] text-[#0F1013]">|</span>}
+                <h1 className="text-[20px] sm:text-[24px] font-light text-[#0F1013] tracking-tighter transition-all duration-500 hover:-translate-y-1 select-none">
+                  {label}
+                </h1>
+              </React.Fragment>
+            ))}
+          </div>
+
+          {/* Social Icons */}
+          <div className="mt-5 flex flex-wrap justify-center items-center gap-5">
+            <ClickableIcons imgsrc={ResumeIcon} scale={80} link={MyResume} />
+            <ClickableIcons imgsrc={GithubIcon} link={"https://github.com/yasuhitoyen"} />
+            <ClickableIcons
+              imgsrc={LinkedinIcon}
+              link={"https://www.linkedin.com/in/michael-yen-3a971b263/"}
+              scale={120}
+            />
+          </div>
         </motion.div>
       </div>
     </section>

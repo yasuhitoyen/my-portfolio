@@ -1,10 +1,12 @@
 import React from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import ExpertiseCard from "./ExpertiseCard";
 import ChartIcon from "./assets/images/chart-line-up.svg";
 import ComputerIcon from "./assets/images/computer.svg";
 import BrowserIcon from "./assets/images/site-browser.svg";
 import PythonCodeBackground from "./PythonCodeBackground";
+// css, vscode, git, html, java, nextjs, pytorch, react, riot, sql, tailwind
+
 
 const Expertise = ({ id }) => {
   const sectionVariants = {
@@ -19,7 +21,7 @@ const Expertise = ({ id }) => {
   const backgroundVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
-      opacity: 0.2,
+      opacity: 0.15,
       y: 0,
       transition: { duration: 1.2, ease: "easeOut" },
     },
@@ -28,62 +30,69 @@ const Expertise = ({ id }) => {
   return (
     <section id={id}>
       <motion.div
-        className="relative w-full h-[600px] pt-[100px] flex flex-col"
+        className="bg-[#F8F5EF] relative w-full min-h-[800px] pt-[100px] flex flex-col px-4 sm:px-6 lg:px-40"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
-        {/* Python Code Backgrounds */}
-        <motion.div
-          className="absolute inset-0 flex select-none"
-          variants={backgroundVariants}
-        >
-          <div className="flex-1" style={{ transform: "translateY(-20px)" }}>
-            <PythonCodeBackground type={1} />
-          </div>
-          <div className="flex-1" style={{ transform: "translateY(10px)" }}>
-            <PythonCodeBackground type={2} />
-          </div>
-          <div className="flex-1" style={{ transform: "translateY(-15px)" }}>
-            <PythonCodeBackground type={3} />
-          </div>
-          <div className="flex-1" style={{ transform: "translateY(5px)" }}>
-            <PythonCodeBackground type={4} />
-          </div>
-        </motion.div>
-
-        {/* Content */}
+        {/* Foreground Content */}
         <motion.div className="relative z-10" variants={sectionVariants}>
-          <div className="text-center">
-            <h1 className="text-[80px] font-bold clay-text c9-text">
-              My Skills
+          <div className="text-center mb-8">
+            <h1 className="text-[22px] font-extralight text-black">
+              Check out my
+            </h1>
+            <h1 className="text-[42px] font-lighter text-black">
+              Skills
             </h1>
           </div>
+
+          {/* Cards Container */}
           <motion.div
-            className="flex flex-row items-center px-40 -space-x-[4px]"
+            className="
+              flex 
+              flex-col md:flex-row 
+              items-center 
+              justify-center 
+              gap-6 md:gap-0 
+              overflow-x-auto md:overflow-visible 
+              snap-x md:snap-none 
+              scroll-smooth 
+              px-2
+            "
             variants={sectionVariants}
           >
-            <ExpertiseCard
-              title="Software Development"
-              text="Skilled in Python, Java, and JavaScript with a focus on reliable, efficient coding and version control with Git."
-              textwidth={250}
-              color={1}
-              img={ComputerIcon}
-            />
-            <ExpertiseCard
-              title="Machine Learning"
-              text="Experienced in PyTorch and TensorFlow, with strengths in neural networks, data prep, and predictive modeling."
-              textwidth={190}
-              color={2}
-              img={ChartIcon}
-            />
-            <ExpertiseCard
-              title="React"
-              text="Proficient in React, Next.js, and Tailwind CSS, creating responsive, UX-focused web apps with smooth navigation using React Router and Framer Motion."
-              textwidth={65}
-              color={3}
-              img={BrowserIcon}
-            />
+            <div className="snap-center shrink-0">
+              <ExpertiseCard
+                title="Software Development"
+                text="Skilled in Python, Java, and JavaScript with a focus on reliable, efficient coding and version control with Git."
+                textwidth={250}
+                color={1}
+                img={ComputerIcon}
+                listskills={['java', 'python', 'git']}
+              />
+            </div>
+            <div className="snap-center shrink-0">
+              <ExpertiseCard
+                title="Machine Learning"
+                text="Experienced in PyTorch and Deep Learning and a solid foundation in Computer Vision"
+                textwidth={190}
+                color={2}
+                img={ChartIcon}
+                listskills={['pytorch', 'python']}
+
+              />
+            </div>
+            <div className="snap-center shrink-0">
+              <ExpertiseCard
+                title="Web Development"
+                text="Proficient in React/ReactNative, Next.js, and Tailwind CSS"
+                textwidth={190}
+                color={3}
+                img={BrowserIcon}
+                listskills={['react', 'tailwind']}
+
+              />
+            </div>
           </motion.div>
         </motion.div>
       </motion.div>

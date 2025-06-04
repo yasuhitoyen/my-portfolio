@@ -62,7 +62,7 @@ const ContactMe = ({ id }) => {
 
   return (
     <section id={id}>
-      <div className="relative bg-[#F8F5EF] h-[1200px] flex flex-col items-center justify-center pt-12 md:pt-10 lg:pt-10">
+      <div className="relative bg-[#F8F5EF] h-[1200px] flex flex-col items-center justify-center pt-5 md:pt-5 lg:pt-5">
         <motion.div
           className="w-full h-auto flex flex-col items-center relative"
           variants={containerVariants}

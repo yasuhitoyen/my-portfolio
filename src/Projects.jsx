@@ -13,7 +13,7 @@ const Projects = ({ id }) => {
           <h4 className="text-[24px] md:text-[30px] font-extralight text-black">
             Here are my
           </h4>
-          <h4 className="text-[32px] md:text-[40px] font-light text-black mb-10">
+          <h4 className="text-[32px] md:text-[40px] font-light text-black mb-10 ">
             Projects
           </h4>
         </div>
@@ -39,14 +39,14 @@ const Projects = ({ id }) => {
             title="SplitTech"
             description="Platform to streamline group expense management."
             microskills={["python", "sql", "javascript"]}
-            link="https://github.com/yasuhitoyen/SplitTech"
+            link="https://devpost.com/software/splitech"
           />
           <Project
             size="xl"
             image={leagueImage}
-            scaley={1}
-            scalex={1}
-            shifty={-40}
+            scaley={1.25}
+            scalex={1.25}
+            shifty={-10}
             shiftx={0}
             title="YasuLoL"
             description="Web app for match statistics and AI-powered gameplay advice."
@@ -56,9 +56,9 @@ const Projects = ({ id }) => {
           <Project
             size="xl"
             image={apocalypseImage}
-            scaley={1}
-            scalex={1}
-            shifty={-40}
+            scaley={1.2}
+            scalex={1.15}
+            shifty={0}
             shiftx={0}
             title="Apocalypse"
             description="A multiplayer survival game coded in Java"

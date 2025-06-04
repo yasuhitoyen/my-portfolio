@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import MicroSkillsList from "./MicroSkillsList";
+
 // Animation variants
 const containerVariants = {
   offscreen: {
@@ -30,7 +31,7 @@ const Project = ({
   shiftx = 0,
   shifty = 0,
   link,
-  microskills
+  microskills,
 }) => {
   return (
     <motion.a
@@ -44,23 +45,34 @@ const Project = ({
       viewport={{ once: true, amount: 0.2 }}
     >
       <div className="w-[320px] h-[360px] bg-white flex flex-col rounded-xl overflow-hidden group cursor-pointer shadow-sm hover:shadow-md transition-shadow duration-300 relative">
+        
         {/* MicroSkills - Top Left */}
-        <div className="absolute top-3 left-3 z-10 h-[50px] bg-gray-100 rounded-full scale-[80%] ">
-          <MicroSkillsList listskills={microskills}></MicroSkillsList>
+        <div className="absolute top-3 left-3 z-10 h-[50px] bg-gray-100 rounded-full scale-[80%]">
+          <MicroSkillsList listskills={microskills} />
         </div>
 
-        {/* Image */}
+        {/* Image with transformations */}
         <div className="flex items-center justify-center w-full h-[220px] overflow-hidden bg-white">
-          <div className="transition-all duration-700 group-hover:scale-105">
-            <img
-              src={image}
-              alt="Project"
-              className="object-cover rounded-md"
-              style={{
-                transform: `scaleX(${scalex}) scaleY(${scaley}) translate(${shiftx}px, ${shifty}px)`,
-              }}
-            />
-          </div>
+          <motion.img
+            src={image}
+            alt="Project"
+            className="object-cover rounded-md"
+            initial={{
+              scale: 1,
+              scaleX: scalex,
+              scaleY: scaley,
+              x: shiftx,
+              y: shifty,
+            }}
+            whileHover={{ 
+              scale: 1.05,
+              scaleX: scalex,
+              scaleY: scaley,
+              x: shiftx,
+              y: shifty,
+            }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+          />
         </div>
 
         {/* Title + Description */}
@@ -78,7 +90,7 @@ const Project = ({
             )}
           </div>
 
-          {/* Hover text - now positioned relative to the fixed container */}
+          {/* Hover text - More Info */}
           <p className="absolute left-0 right-0 bottom-2 text-sm font-light text-gray-800 transition-all duration-500 transform translate-y-4 opacity-0 group-hover:translate-y-[-16px] group-hover:opacity-100">
             More Info →
           </p>

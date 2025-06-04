@@ -59,7 +59,7 @@ const Experiences = ({ id }) => {
 
   return (
     <section id={id}>
-      <div className="w-full min-h-screen flex flex-col items-center pt-[120px] px-4 bg-[#F8F5EF]">
+      <div className="w-full min-h-[80%] flex flex-col items-center pt-[120px] px-4 bg-[#F8F5EF]">
         <div className="text-center w-full mb-6">
           <h1 className="font-light text-[32px] sm:text-[40px]">Experience</h1>
         </div>
